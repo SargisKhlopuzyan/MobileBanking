@@ -1,0 +1,57 @@
+package com.sargis.khlopuzyan.mobilebanking.data.local.source
+
+import com.sargis.khlopuzyan.mobilebanking.data.local.dao.UserDao
+import com.sargis.khlopuzyan.mobilebanking.data.local.entity.UserEntity
+import com.sargis.khlopuzyan.mobilebanking.data.local.sharedPreferences.AppSettingsSharedPref
+import kotlinx.coroutines.flow.Flow
+
+interface UserDataSource {
+    fun getLastSignedInUsername(): String?
+    fun saveLastSignedInUsername(username: String)
+    fun observeAllUsers(): Flow<List<UserEntity>>
+    suspend fun getUserById(id: Int): UserEntity?
+    suspend fun getUserByUsername(username: String): UserEntity?
+    suspend fun getUserByUsernameAndPassword(username: String, password: String): UserEntity?
+    suspend fun insertUser(node: UserEntity): Int
+    suspend fun deleteUser(node: UserEntity): Int
+}
+
+class UserDataSourceImpl(
+    val appSettingsSharedPref: AppSettingsSharedPref,
+    val dao: UserDao,
+) : UserDataSource {
+    override fun getLastSignedInUsername(): String? {
+        return appSettingsSharedPref.getLastSignedInUsername()
+    }
+
+    override fun saveLastSignedInUsername(username: String) {
+        appSettingsSharedPref.saveLastSignedInUsername(username)
+    }
+
+    override fun observeAllUsers(): Flow<List<UserEntity>> {
+        return dao.getAllUsers()
+    }
+
+    override suspend fun getUserById(id: Int): UserEntity? {
+        return dao.getUserById(id)
+    }
+
+    override suspend fun getUserByUsername(username: String): UserEntity? {
+        return dao.getUserByUsername(username)
+    }
+
+    override suspend fun getUserByUsernameAndPassword(
+        username: String,
+        password: String,
+    ): UserEntity? {
+        return dao.getUserByUsernameAndPassword(username, password)
+    }
+
+    override suspend fun insertUser(node: UserEntity): Int {
+        return dao.insertUser(node).toInt()
+    }
+
+    override suspend fun deleteUser(node: UserEntity): Int {
+        return dao.deleteUser(node)
+    }
+}
