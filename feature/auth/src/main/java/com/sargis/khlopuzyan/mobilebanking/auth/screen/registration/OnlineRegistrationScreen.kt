@@ -23,7 +23,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun RegistrationScreen(uiState: RegistrationUIState, onEvent: (RegistrationUIEvent) -> Unit) {
+fun OnlineRegistrationScreen(uiState: RegistrationUIState, onEvent: (RegistrationUIEvent) -> Unit) {
     Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
         Column(
             modifier = Modifier
@@ -131,7 +131,7 @@ fun RegistrationScreen(uiState: RegistrationUIState, onEvent: (RegistrationUIEve
 @Preview
 @Composable
 fun RegisterScreenPreview() {
-    RegistrationScreen(RegistrationUIState(error = "User already exist")) {
+    OnlineRegistrationScreen(RegistrationUIState(error = "User already exist")) {
 
     }
 }

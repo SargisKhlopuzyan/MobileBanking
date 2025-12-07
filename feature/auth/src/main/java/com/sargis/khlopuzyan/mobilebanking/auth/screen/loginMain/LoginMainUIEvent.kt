@@ -7,6 +7,7 @@ sealed interface LoginMainUIEvent : UIEvent {
     object ChooseLocale : LoginMainUIEvent
     object Login : LoginMainUIEvent
     object OnlineRegistration : LoginMainUIEvent
+    object BecomeACustomer : LoginMainUIEvent
     object Rates : LoginMainUIEvent
     object Maps : LoginMainUIEvent
     object News : LoginMainUIEvent

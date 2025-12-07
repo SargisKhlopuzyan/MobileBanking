@@ -1,4 +1,4 @@
-package com.sargis.khlopuzyan.mobilebanking.auth.screen.map
+package com.sargis.khlopuzyan.mobilebanking.auth.screen.resetPassword
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.icons.Icons
@@ -19,14 +19,14 @@ import com.sargis.khlopuzyan.mobilebanking.uicommon.theme.Typography
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MapScreen(uiState: MapUIState, onEvent: (MapUIEvent) -> Unit) {
+fun ResetPasswordScreen(uiState: ResetPasswordUIState, onEvent: (ResetPasswordUIEvent) -> Unit) {
     Scaffold(
         topBar = {
             TopAppBar(
                 navigationIcon = {
                     IconButton(
                         onClick = {
-//                            onEvent(AboutUIEvent.NavigateUp)
+//                            onEvent(ResetPasswordUIEvent.NavigateUp)
                         }
                     ) {
                         Icon(
@@ -37,7 +37,7 @@ fun MapScreen(uiState: MapUIState, onEvent: (MapUIEvent) -> Unit) {
                 },
                 title = {
                     Text(
-                        text = stringResource(R.string.map),
+                        text = stringResource(R.string.reset_password),
                         style = Typography.titleSmall
                     )
                 },

@@ -1,4 +1,4 @@
-package com.sargis.khlopuzyan.mobilebanking.auth.screen.map
+package com.sargis.khlopuzyan.mobilebanking.auth.screen.becomeACustomer
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.icons.Icons
@@ -14,19 +14,22 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import com.sargis.khlopuzyan.mobilebanking.auth.screen.loginMain.LoginMainUIEvent
+import com.sargis.khlopuzyan.mobilebanking.auth.screen.map.MapUIEvent
+import com.sargis.khlopuzyan.mobilebanking.auth.screen.map.MapUIState
 import com.sargis.khlopuzyan.mobilebanking.uicommon.R
 import com.sargis.khlopuzyan.mobilebanking.uicommon.theme.Typography
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MapScreen(uiState: MapUIState, onEvent: (MapUIEvent) -> Unit) {
+fun BecomeACustomerScreen(uiState: BecomeACustomerUIState, onEvent: (BecomeACustomerUIEvent) -> Unit) {
     Scaffold(
         topBar = {
             TopAppBar(
                 navigationIcon = {
                     IconButton(
                         onClick = {
-//                            onEvent(AboutUIEvent.NavigateUp)
+//                            onEvent(BecomeACustomerUIEvent.NavigateUp)
                         }
                     ) {
                         Icon(

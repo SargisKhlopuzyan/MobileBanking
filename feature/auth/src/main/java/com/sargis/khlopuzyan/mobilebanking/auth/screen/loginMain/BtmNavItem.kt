@@ -2,9 +2,9 @@ package com.sargis.khlopuzyan.mobilebanking.auth.screen.loginMain
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.CurrencyExchange
-import androidx.compose.material.icons.filled.Info
-import androidx.compose.material.icons.filled.Map
+import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material.icons.filled.Newspaper
+import androidx.compose.material.icons.outlined.Info
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.sargis.khlopuzyan.mobilebanking.auth.navigation.AuthRoute
 import com.sargis.khlopuzyan.mobilebanking.uicommon.R
@@ -15,7 +15,7 @@ data class BtmNavItem(
     val route: String,
 )
 
-fun getLoginMainBottomNavItems() : List<BtmNavItem> {
+fun loginMainBtmNavEntries(): List<BtmNavItem> {
     return listOf(
         BtmNavItem(
             R.string.rates,
@@ -24,7 +24,7 @@ fun getLoginMainBottomNavItems() : List<BtmNavItem> {
         ),
         BtmNavItem(
             R.string.map,
-            Icons.Default.Map,
+            Icons.Default.LocationOn,
             AuthRoute.Map.route
         ),
         BtmNavItem(
@@ -34,7 +34,7 @@ fun getLoginMainBottomNavItems() : List<BtmNavItem> {
         ),
         BtmNavItem(
             R.string.about,
-            Icons.Default.Info,
+            Icons.Outlined.Info,
             AuthRoute.About.route
         )
     )

@@ -15,6 +15,8 @@
     <string name="password">Password</string>
     <string name="forgot_your_password_question_mark">Forgot your password?</string>
     <string name="online_registration">Online registration</string>
+    <string name="become_a_customer">Become a customer</string>
+    <string name="reset_password">Reset password</string>
 
     <string name="rates">Rates</string>
     <string name="map">Map</string>

@@ -6,6 +6,7 @@ sealed class AuthRoute(val route: String) {
     object LoginMain : AuthRoute("$authRoute/login_main")
     object Login : AuthRoute("$authRoute/login")
     object OnlineRegistration : AuthRoute("$authRoute/online_registration")
+    object BecomeACustomer : AuthRoute("$authRoute/become_a_customer")
     object Rates : AuthRoute("$authRoute/rates")
     object Map : AuthRoute("$authRoute/map")
     object News : AuthRoute("$authRoute/news")

@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -18,6 +19,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarDefaults
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.Scaffold
@@ -49,8 +51,10 @@ fun LoginMainScreen(
                     .padding(horizontal = 8.dp)
                     .fillMaxWidth(),
                 containerColor = MaterialTheme.colorScheme.background,
+//                windowInsets = WindowInsets()
+                windowInsets = NavigationBarDefaults.windowInsets
             ) {
-                getLoginMainBottomNavItems().forEach { item ->
+                loginMainBtmNavEntries().forEach { item ->
                     NavigationBarItem(
                         selected = false,
                         icon = {
@@ -58,7 +62,7 @@ fun LoginMainScreen(
                                 modifier = Modifier
                                     .fillMaxWidth()
                                     .weight(1f)
-                                    .height(72.dp),
+                                    .aspectRatio(1f),
                                 onItemClick = onItemClick,
                                 navBarItem = item
                             )
@@ -123,9 +127,9 @@ fun LoginMainScreen(
 
                     SecondaryButton(
                         modifier = Modifier.weight(0.5f),
-                        label = stringResource(R.string.online_registration)
+                        label = stringResource(R.string.become_a_customer)
                     ) {
-                        onEvent(LoginMainUIEvent.OnlineRegistration)
+                        onEvent(LoginMainUIEvent.BecomeACustomer)
                     }
                 }
 
@@ -168,14 +172,15 @@ private fun NavBarItem(
     ) {
         Icon(
             imageVector = navBarItem.icon,
+            tint = MaterialTheme.colorScheme.onTertiaryFixedVariant,
             contentDescription = stringResource(navBarItem.nameRecId)
         )
 
         Text(
             text = stringResource(navBarItem.nameRecId),
-            style = Typography.bodyMedium,
+            color = MaterialTheme.colorScheme.onBackground,
+            style = Typography.labelSmall,
         )
-
     }
 }
 

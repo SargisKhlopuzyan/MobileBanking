@@ -8,7 +8,6 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
 import com.sargis.khlopuzyan.mobilebanking.auth.screen.about.AboutScreen
-import com.sargis.khlopuzyan.mobilebanking.auth.screen.about.AboutUIEvent
 import com.sargis.khlopuzyan.mobilebanking.auth.screen.about.AboutViewModel
 import com.sargis.khlopuzyan.mobilebanking.auth.screen.login.LoginNavigationEvent
 import com.sargis.khlopuzyan.mobilebanking.auth.screen.login.LoginScreen
@@ -17,18 +16,21 @@ import com.sargis.khlopuzyan.mobilebanking.auth.screen.login.LoginViewModel
 import com.sargis.khlopuzyan.mobilebanking.auth.screen.loginMain.LoginMainScreen
 import com.sargis.khlopuzyan.mobilebanking.auth.screen.loginMain.LoginMainUIEvent
 import com.sargis.khlopuzyan.mobilebanking.auth.screen.loginMain.LoginMainViewModel
+import com.sargis.khlopuzyan.mobilebanking.auth.screen.loginWithAnotherAccount.LoginWithAnotherAccountScreen
+import com.sargis.khlopuzyan.mobilebanking.auth.screen.loginWithAnotherAccount.LoginWithAnotherAccountViewModel
 import com.sargis.khlopuzyan.mobilebanking.auth.screen.map.MapScreen
-import com.sargis.khlopuzyan.mobilebanking.auth.screen.map.MapUIEvent
 import com.sargis.khlopuzyan.mobilebanking.auth.screen.map.MapViewModel
 import com.sargis.khlopuzyan.mobilebanking.auth.screen.news.NewsScreen
-import com.sargis.khlopuzyan.mobilebanking.auth.screen.news.NewsUIEvent
 import com.sargis.khlopuzyan.mobilebanking.auth.screen.news.NewsViewModel
 import com.sargis.khlopuzyan.mobilebanking.auth.screen.rates.RatesScreen
-import com.sargis.khlopuzyan.mobilebanking.auth.screen.rates.RatesUIEvent
 import com.sargis.khlopuzyan.mobilebanking.auth.screen.rates.RatesViewModel
+import com.sargis.khlopuzyan.mobilebanking.auth.screen.registration.OnlineRegistrationScreen
 import com.sargis.khlopuzyan.mobilebanking.auth.screen.registration.RegistrationNavigationEvent
-import com.sargis.khlopuzyan.mobilebanking.auth.screen.registration.RegistrationScreen
 import com.sargis.khlopuzyan.mobilebanking.auth.screen.registration.RegistrationViewModel
+import com.sargis.khlopuzyan.mobilebanking.auth.screen.resetPassword.ResetPasswordScreen
+import com.sargis.khlopuzyan.mobilebanking.auth.screen.resetPassword.ResetPasswordViewModel
+import com.sargis.khlopuzyan.mobilebanking.auth.screen.signInConfiguration.SignInConfigurationScreen
+import com.sargis.khlopuzyan.mobilebanking.auth.screen.signInConfiguration.SignInConfigurationViewModel
 import org.koin.androidx.compose.koinViewModel
 
 fun NavGraphBuilder.authNavGraph(
@@ -68,12 +70,15 @@ fun NavGraphBuilder.authNavGraph(
 
                         LoginMainUIEvent.Login -> navController.navigate(AuthRoute.Login.route)
                         LoginMainUIEvent.OnlineRegistration -> navController.navigate(AuthRoute.OnlineRegistration.route)
-                        LoginMainUIEvent.About -> navController.navigate(AuthRoute.About.route)
+                        LoginMainUIEvent.BecomeACustomer -> navController.navigate(AuthRoute.BecomeACustomer.route)
+
+                        LoginMainUIEvent.Rates -> navController.navigate(AuthRoute.Rates.route)
                         LoginMainUIEvent.Maps -> navController.navigate(AuthRoute.Map.route)
                         LoginMainUIEvent.News -> navController.navigate(AuthRoute.News.route)
-                        LoginMainUIEvent.Rates -> navController.navigate(AuthRoute.Rates.route)
+                        LoginMainUIEvent.About -> navController.navigate(AuthRoute.About.route)
                     }
-                })
+                }
+            )
         }
 
         composable(route = AuthRoute.Rates.route) {
@@ -161,8 +166,50 @@ fun NavGraphBuilder.authNavGraph(
                 }
             }
 
-            RegistrationScreen(uiState, onEvent = {
+            OnlineRegistrationScreen(uiState, onEvent = {
                 viewModel::onEvent.invoke(it)
+            })
+        }
+
+        composable(route = AuthRoute.BecomeACustomer.route) {
+//            val viewModel: BecomeACustomerViewModel = koinViewModel()
+//            val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+
+//            BecomeACustomerScreen(uiState, onEvent = {
+//                viewModel::onEvent.invoke(it)
+//            })
+        }
+
+        composable(route = AuthRoute.ResetPassword.route) {
+            val viewModel: ResetPasswordViewModel = koinViewModel()
+            val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+
+            ResetPasswordScreen(uiState, onEvent = {
+//                when (it) {
+//                    ResetPasswordUIEvent.NavigateUp -> navController.popBackStack()
+//                }
+            })
+        }
+
+        composable(route = AuthRoute.SignInConfiguration.route) {
+            val viewModel: SignInConfigurationViewModel = koinViewModel()
+            val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+
+            SignInConfigurationScreen(uiState, onEvent = {
+//                when (it) {
+//                    SignInConfigurationUIEvent.NavigateUp -> navController.popBackStack()
+//                }
+            })
+        }
+
+        composable(route = AuthRoute.LoginWithAnotherAccount.route) {
+            val viewModel: LoginWithAnotherAccountViewModel = koinViewModel()
+            val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+
+            LoginWithAnotherAccountScreen(uiState, onEvent = {
+//                when (it) {
+//                    LoginWithAnotherAccountUIEvent.NavigateUp -> navController.popBackStack()
+//                }
             })
         }
     }
