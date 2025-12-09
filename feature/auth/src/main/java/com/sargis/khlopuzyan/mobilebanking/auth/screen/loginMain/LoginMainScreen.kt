@@ -51,7 +51,6 @@ fun LoginMainScreen(
                     .padding(horizontal = 8.dp)
                     .fillMaxWidth(),
                 containerColor = MaterialTheme.colorScheme.background,
-//                windowInsets = WindowInsets()
                 windowInsets = NavigationBarDefaults.windowInsets
             ) {
                 loginMainBtmNavEntries().forEach { item ->

@@ -22,4 +22,6 @@
     <string name="map">Map</string>
     <string name="news">News</string>
     <string name="about">About</string>
+
+    <string name="ok">Ok</string>
 </resources>

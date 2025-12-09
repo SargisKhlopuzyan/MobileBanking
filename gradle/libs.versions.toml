@@ -2,6 +2,8 @@
 # Build Config
 agp = "8.10.1"
 
+coilCompose = "2.7.0"
+
 # Language & Runtime
 kotlin = "2.1.10"
 kotlinx-coroutines = "1.10.2"
@@ -41,6 +43,8 @@ uiTooling = "1.10.0"
 
 [libraries]
 # Language & Runtime
+coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilCompose" }
+#coil-network-okhttp = { module = "io.coil-kt.coil3:coil-network-okhttp", version.ref = "coilCompose" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
 
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }

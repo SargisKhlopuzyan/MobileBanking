@@ -46,7 +46,7 @@ fun SignInConfigurationScreen(
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
                     navigationIconContentColor = MaterialTheme.colorScheme.onPrimary,
-                    containerColor = MaterialTheme.colorScheme.primary,
+                    containerColor = MaterialTheme.colorScheme.surface,
                     titleContentColor = MaterialTheme.colorScheme.onPrimary
                 )
             )

@@ -1,6 +1,7 @@
 package com.sargis.khlopuzyan.mobilebanking.uicommon.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Typography
@@ -23,9 +24,7 @@ private val DarkColorScheme = darkColorScheme(
     onTertiary = OnTertiaryDark,
 
     surface = SurfaceDark,
-    onSurface = OnSurface,
-    onSurfaceVariant = OnSurfaceVariant,
-    surfaceContainerLowest = SurfaceLowest,
+    onSurface = OnSurfaceDark,
 
     background = BackgroundDark,
     onBackground = OnBackgroundDark,
@@ -42,8 +41,6 @@ private val LightColorScheme = lightColorScheme(
 
     surface = Surface,
     onSurface = OnSurface,
-    onSurfaceVariant = OnSurfaceVariant,
-    surfaceContainerLowest = SurfaceLowest,
 
     background = Background,
     onBackground = OnBackground,
@@ -65,7 +62,6 @@ val Typography = Typography(
         fontWeight = FontWeight.Bold,
         fontSize = 32.sp,
     ),
-
     bodySmall = TextStyle(
         fontFamily = Lato,
         fontWeight = FontWeight.Normal,
@@ -103,6 +99,7 @@ val Typography = Typography(
 private val shape = AppShape(
     container = RoundedCornerShape(8.dp),
     button = RoundedCornerShape(24),
+    circle = CircleShape,
 )
 
 private val size = AppSize(
@@ -130,8 +127,8 @@ fun AppTheme(
     }
 
     CompositionLocalProvider(
-        LocalAppShape provides shape,
-        LocalAppSize provides size,
+        LocalShape provides shape,
+        LocalSize provides size,
 //        LocalIndication provides rippleIndication,
     ) {
         MaterialTheme(

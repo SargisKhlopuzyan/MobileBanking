@@ -25,7 +25,6 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -37,10 +36,11 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.sargis.khlopuzyan.mobilebanking.auth.screen.login.LoginUIEvent
 import com.sargis.khlopuzyan.mobilebanking.uicommon.R
 import com.sargis.khlopuzyan.mobilebanking.uicommon.component.PrimaryButton
+import com.sargis.khlopuzyan.mobilebanking.uicommon.theme.AppTheme
 import com.sargis.khlopuzyan.mobilebanking.uicommon.theme.Typography
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -72,7 +72,7 @@ fun LoginWithAnotherAccountScreen(
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
                     navigationIconContentColor = MaterialTheme.colorScheme.onPrimary,
-                    containerColor = MaterialTheme.colorScheme.primary,
+                    containerColor = MaterialTheme.colorScheme.surface,
                     titleContentColor = MaterialTheme.colorScheme.onPrimary
                 )
             )
@@ -153,6 +153,7 @@ fun LoginWithAnotherAccountScreen(
                     Text(
                         text = stringResource(R.string.forgot_your_password_question_mark),
                         style = Typography.titleSmall
+
                     )
                 }
             }
@@ -176,10 +177,28 @@ fun LoginWithAnotherAccountScreen(
                 )
             }
 
+            Spacer(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .weight(1f)
+            )
+
             Text(
                 text = stringResource(R.string.online_registration),
                 style = Typography.titleSmall
             )
+
+            Spacer(modifier = Modifier.height(32.dp))
+        }
+    }
+}
+
+@Preview
+@Composable
+fun LoginWithAnotherAccountScreenPreview() {
+    AppTheme {
+        LoginWithAnotherAccountScreen(uiState = LoginWithAnotherAccountUIState()) {
+
         }
     }
 }

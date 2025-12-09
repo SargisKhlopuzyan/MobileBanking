@@ -1,5 +1,6 @@
 package com.sargis.khlopuzyan.mobilebanking.uicommon.theme
 
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.graphics.Shape
@@ -8,6 +9,7 @@ import androidx.compose.ui.unit.Dp
 data class AppShape(
     val container: Shape,
     val button: Shape,
+    val circle: Shape,
 )
 
 data class AppSize(
@@ -17,14 +19,15 @@ data class AppSize(
     val small: Dp,
 )
 
-val LocalAppShape = staticCompositionLocalOf {
+val LocalShape = staticCompositionLocalOf {
     AppShape(
         container = RectangleShape,
         button = RectangleShape,
+        circle = CircleShape,
     )
 }
 
-val LocalAppSize = staticCompositionLocalOf {
+val LocalSize = staticCompositionLocalOf {
     AppSize(
         large = Dp.Unspecified,
         medium = Dp.Unspecified,
