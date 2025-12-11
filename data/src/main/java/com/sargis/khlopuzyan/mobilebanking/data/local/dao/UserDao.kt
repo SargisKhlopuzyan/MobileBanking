@@ -27,8 +27,8 @@ abstract class UserDao {
     ): UserEntity?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    abstract suspend fun insertUser(node: UserEntity): Long
+    abstract suspend fun insertUser(user: UserEntity): Long
 
     @Delete
-    abstract suspend fun deleteUser(node: UserEntity): Int
+    abstract suspend fun deleteUser(user: UserEntity): Int
 }

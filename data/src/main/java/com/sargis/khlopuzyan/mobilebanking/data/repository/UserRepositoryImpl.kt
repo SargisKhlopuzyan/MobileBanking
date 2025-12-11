@@ -2,6 +2,7 @@ package com.sargis.khlopuzyan.mobilebanking.data.repository
 
 import com.sargis.khlopuzyan.mobilebanking.data.local.entity.toUser
 import com.sargis.khlopuzyan.mobilebanking.data.local.entity.toUserEntity
+import com.sargis.khlopuzyan.mobilebanking.data.local.source.SignedInUsernameDataSource
 import com.sargis.khlopuzyan.mobilebanking.data.local.source.UserDataSource
 import com.sargis.khlopuzyan.mobilebanking.domain.entity.LoginUserParam
 import com.sargis.khlopuzyan.mobilebanking.domain.entity.RegisterUserParam
@@ -12,6 +13,7 @@ import kotlinx.coroutines.flow.map
 
 class UserRepositoryImpl(
     private val userDataSource: UserDataSource,
+    private val signedInUsernameDataSource: SignedInUsernameDataSource,
 ) : UserRepository {
 
     override fun getLastSignedInUsername(): String? {
@@ -49,7 +51,7 @@ class UserRepositoryImpl(
         val userEntity = registerUserParam.toUserEntity()
         val id = userDataSource.insertUser(userEntity)
 
-        return userEntity.toUser().copy(id = id)
+        return userEntity.toUser().copy(userId = id)
     }
 
     override suspend fun deleteUser(userEntity: User): Int {

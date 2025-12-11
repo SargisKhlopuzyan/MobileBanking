@@ -1,5 +1,8 @@
 package com.sargis.khlopuzyan.mobilebanking.ui.navigation
 
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -14,7 +17,12 @@ fun AppNavigation(navHostController: NavHostController) {
     var starDestination = authRoute
     NavHost(
         navController = navHostController,
-        startDestination = authRoute
+        startDestination = authRoute,
+        enterTransition = {
+            fadeIn(tween(0))
+        }, exitTransition = {
+            fadeOut(tween(0))
+        }
     ) {
         authNavGraph(
             navController = navHostController,

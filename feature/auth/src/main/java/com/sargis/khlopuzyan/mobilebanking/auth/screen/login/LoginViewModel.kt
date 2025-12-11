@@ -26,7 +26,13 @@ class LoginViewModel(
     override fun onEvent(uiEvent: LoginUIEvent) {
         when (uiEvent) {
             is LoginUIEvent.Login -> login(uiEvent.username, uiEvent.password)
-            else -> {}
+            LoginUIEvent.HideDialog -> updateUiState {
+                it.copy(
+                    error = null
+                )
+            }
+            LoginUIEvent.NavigateUp -> TODO()
+            LoginUIEvent.Register -> TODO()
         }
     }
 
@@ -45,7 +51,7 @@ class LoginViewModel(
                 }
 
                 is Result.Success<User> -> {
-                    result.data?.id?.let { userId ->
+                    result.data?.userId?.let { userId ->
                         viewModelScope.launch {
                             _navigationEvent.send(LoginNavigationEvent.AuthSuccess(userId))
                         }

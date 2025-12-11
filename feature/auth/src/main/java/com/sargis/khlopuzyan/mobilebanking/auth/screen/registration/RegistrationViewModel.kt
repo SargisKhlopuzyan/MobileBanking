@@ -51,7 +51,7 @@ class RegistrationViewModel(
                 }
 
                 is Result.Success<User> -> {
-                    result.data?.id?.let { userId ->
+                    result.data?.userId?.let { userId ->
                         updateUiState {
                             it.copy(error = "$username registered successfully")
                         }

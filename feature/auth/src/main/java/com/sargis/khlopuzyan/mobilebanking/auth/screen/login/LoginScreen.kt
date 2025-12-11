@@ -283,11 +283,13 @@ fun LoginScreen(
                 Spacer(modifier = Modifier.height(32.dp))
             }
 
-            if (uiState.error == null) {
+            if (uiState.error != null) {
                 InfoAlertDialog(
                     onDismissRequest = {},
-                    onConfirmation = {},
-                    dialogTitle = uiState.error ?: "Something went wrong!",
+                    onConfirmation = {
+                        onEvent(LoginUIEvent.HideDialog)
+                    },
+                    dialogTitle = uiState.error,
                     dialogText = null,
                     icon = null
                 )

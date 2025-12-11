@@ -8,19 +8,19 @@ import com.sargis.khlopuzyan.mobilebanking.domain.entity.User
 @Entity(tableName = "user")
 data class UserEntity(
     @PrimaryKey(autoGenerate = true)
-    val id: Int? = null,
+    val userId: Int? = null,
     val firstName: String,
     val lastName: String,
     val username: String,
     val password: String,
 )
 
-fun List<UserEntity>.toUserList() = map { noteEntity ->
-    noteEntity.toUser()
+fun List<UserEntity>.toUserList() = map { userEntity ->
+    userEntity.toUser()
 }
 
 fun UserEntity.toUser() = User(
-    id = id,
+    userId = userId,
     firstName = firstName,
     lastName = lastName,
     username = username,
@@ -28,7 +28,7 @@ fun UserEntity.toUser() = User(
 )
 
 fun User.toUserEntity() = UserEntity(
-    id = id,
+    userId = userId,
     firstName = firstName,
     lastName = lastName,
     username = username,

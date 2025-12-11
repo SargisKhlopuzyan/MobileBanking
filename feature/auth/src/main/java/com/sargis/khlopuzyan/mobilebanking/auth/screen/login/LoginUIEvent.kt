@@ -6,4 +6,5 @@ sealed interface LoginUIEvent : UIEvent {
     object NavigateUp : LoginUIEvent
     data class Login(val username: String, val password: String) : LoginUIEvent
     object Register : LoginUIEvent
+    object HideDialog : LoginUIEvent
 }

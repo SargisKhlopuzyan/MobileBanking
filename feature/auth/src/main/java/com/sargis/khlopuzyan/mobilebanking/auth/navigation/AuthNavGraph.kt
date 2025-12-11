@@ -145,7 +145,7 @@ fun NavGraphBuilder.authNavGraph(
                 when (it) {
                     LoginUIEvent.NavigateUp -> navController.popBackStack()
                     LoginUIEvent.Register -> navController.navigate(AuthRoute.OnlineRegistration.route)
-                    is LoginUIEvent.Login -> {
+                    else -> {
                         viewModel::onEvent.invoke(it)
                     }
                 }
